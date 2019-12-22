@@ -1,0 +1,52 @@
+<h2 data-component='base/h2' class='contenteditable'>employees</h2>
+
+<%= form_for(@employee, url: employee_path, method: 'patch',
+  html: { class: "form form-horizontal x-content",
+    data: {component: "form/horizontal", method: 'patch', model: "@employee" } }) do |f| %>
+
+  <% if @employee.errors.any? %>
+    <div id="error_explanation">
+      <h3><%= pluralize(@employee.errors.count, "error") %> prohibited this employee from being saved:</h3>
+      <ul>
+      <% @employee.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class='form-group' data-component='form_element/text_field'>
+    <label class='col-sm-3 control-label contenteditable'>emp_id</label>
+    <div class='col-sm-5 x-content'>
+      <%= f.text_field(:emp_id, class: "form-control", data: { name: "@employee.emp_id" } ) %>
+    </div>
+  </div>
+  <div class='form-group' data-component='form_element/text_field'>
+    <label class='col-sm-3 control-label contenteditable'>name</label>
+    <div class='col-sm-5 x-content'>
+      <%= f.text_field(:name, class: "form-control", data: { name: "@employee.name" } ) %>
+    </div>
+  </div>
+  <div class='form-group' data-component='form_element/number_field'>
+    <label class='col-sm-3 control-label contenteditable'>age</label>
+    <div class='col-sm-5 x-content'>
+      <%= f.number_field(:age, class: "form-control", data: { name: "@employee.age" } ) %>
+    </div>
+  </div>
+  <div class='form-group' data-component='form_element/text_field'>
+    <label class='col-sm-3 control-label contenteditable'>address</label>
+    <div class='col-sm-5 x-content'>
+      <%= f.text_field(:address, class: "form-control", data: { name: "@employee.address" } ) %>
+    </div>
+  </div>
+  <div class='form-group' data-component='form_element/text_field'>
+    <label class='col-sm-3 control-label contenteditable'>busho</label>
+    <div class='col-sm-5 x-content'>
+      <%= f.text_field(:busho, class: "form-control", data: { name: "@employee.busho" } ) %>
+    </div>
+  </div>
+  <div class='form-group'>
+    <div class='col-sm-offset-3 col-sm-5 x-content'>
+      <%= f.submit("Save", class: "btn btn-default contenteditable", data: { component: "form_element/submit"} ) %>
+    </div>
+  </div>
+<% end %>
